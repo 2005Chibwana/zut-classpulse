@@ -1,0 +1,151 @@
+.solution__top {
+  display: grid;
+  gap: 32px;
+}
+
+.solution__identity {
+  --focus-ring: var(--amber-300);
+  padding: 32px 28px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(150deg, var(--blue-900), var(--blue-700));
+  color: #dce8f7;
+  box-shadow: var(--shadow);
+}
+
+.solution__label {
+  margin-bottom: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber-300);
+}
+
+.solution__label--dark {
+  margin-bottom: 16px;
+  color: var(--color-accent-text);
+}
+
+.solution__name {
+  margin-bottom: 4px;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  color: var(--white);
+}
+
+.solution__longname {
+  margin-bottom: 28px;
+  font-weight: 600;
+  color: #cfe3fb;
+}
+
+.solution__purpose {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.solution__users {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+}
+
+.solution__users li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.solution__users h4 {
+  margin-bottom: 4px;
+  font-size: 1.05rem;
+}
+
+.solution__users p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* Problem → fix rows */
+.solution__fixes {
+  margin-top: 56px;
+}
+
+.solution__fixes h3 {
+  margin-bottom: 20px;
+  font-size: 1.35rem;
+}
+
+.solution__fixes ul {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+}
+
+.solution__fix {
+  display: grid;
+  gap: 10px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.solution__before,
+.solution__after {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.solution__before svg,
+.solution__after svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.solution__before {
+  color: var(--color-muted);
+}
+
+.solution__before svg {
+  color: var(--red-700);
+}
+
+.solution__after {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.solution__after svg {
+  color: var(--green-700);
+}
+
+.solution__arrow {
+  display: none;
+  color: var(--grey-500);
+}
+
+@media (min-width: 900px) {
+  .solution__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .solution__identity {
+    padding: 40px;
+  }
+
+  .solution__fix {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .solution__arrow {
+    display: block;
+  }
+}

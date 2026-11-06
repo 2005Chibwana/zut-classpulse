@@ -1,0 +1,75 @@
+/*
+  ZUT ClassPulse theme
+  --------------------
+  Every colour, font, radius and shadow is defined ONCE here.
+  Components use these variables, so changing a value here updates the whole site.
+  Colours are taken from the ZUT logo: deep blue + orange/amber.
+*/
+:root {
+  /* Blues (primary) */
+  --blue-950: #071c3d;
+  --blue-900: #0b2c5f;
+  --blue-700: #0a4fa8;
+  --blue-600: #0a6fd6; /* main brand blue, safe for text on white */
+  --blue-500: #1488f5; /* logo blue, use for large shapes only */
+  --blue-100: #e3f0fd;
+  --blue-50: #f1f7fe;
+
+  /* Amber (accent, used for alerts and highlights) */
+  --amber-300: #ffc27a;
+  --amber-500: #f28c28;
+  --amber-800: #9a4508; /* amber that is dark enough for text on white */
+  --amber-100: #fff1e0;
+
+  /* Status colours */
+  --red-700: #b42318;
+  --red-100: #fdecea;
+  --green-700: #157f3d;
+  --green-100: #e6f6ec;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --grey-50: #f5f7fa;
+  --grey-100: #edf1f6;
+  --grey-200: #dce3ec;
+  --grey-500: #5b6779;
+  --grey-700: #36414f;
+  --ink: #0f1b2d;
+
+  /* Roles: what each colour is used for */
+  --color-bg: var(--white);
+  --color-bg-alt: var(--grey-50);
+  --color-surface: var(--white);
+  --color-border: var(--grey-200);
+  --color-text: var(--ink);
+  --color-muted: var(--grey-500);
+  --color-primary: var(--blue-600);
+  --color-primary-strong: var(--blue-900);
+  --color-accent: var(--amber-500);
+  --color-accent-text: var(--amber-800);
+  --focus-ring: var(--blue-600);
+
+  /* Fonts (loaded from Google Fonts in index.html, with safe fallbacks) */
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  /* Shape and depth */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(15, 27, 45, 0.05), 0 1px 3px rgba(15, 27, 45, 0.07);
+  --shadow: 0 8px 28px rgba(15, 27, 45, 0.08);
+  --shadow-lg: 0 24px 60px rgba(7, 28, 61, 0.22);
+
+  /* Layout */
+  --container: 1120px;
+  --gutter: 16px;
+  --nav-height: 64px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 24px;
+  }
+}

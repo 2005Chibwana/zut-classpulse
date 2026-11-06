@@ -1,0 +1,21 @@
+{
+  "name": "zut-classpulse",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page for ZUT ClassPulse, the Self-Updating Timetable and Class-Alert Hub (BSE2201 group project).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "node scripts/check-placeholders.js"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.3.5"
+  }
+}

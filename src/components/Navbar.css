@@ -1,0 +1,121 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+}
+
+.navbar__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: var(--nav-height);
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary-strong);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar__brand strong {
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.navbar__brand img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.navbar__toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--color-primary-strong);
+  cursor: pointer;
+}
+
+/* Mobile: links drop down below the bar when the menu is open */
+.navbar__links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  padding: 8px var(--gutter) 16px;
+  list-style: none;
+  background: var(--white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+.navbar__links.is-open {
+  display: block;
+}
+
+.navbar__links a {
+  display: block;
+  padding: 12px 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.navbar__links a:hover {
+  background: var(--blue-50);
+  color: var(--color-primary);
+}
+
+/* Desktop: links sit in a row and the menu button is hidden */
+@media (min-width: 960px) {
+  .navbar__toggle {
+    display: none;
+  }
+
+  .navbar__links {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .navbar__links a {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+
+  .navbar__cta a {
+    margin-left: 8px;
+    padding: 8px 20px;
+    border-radius: var(--radius-pill);
+    background: var(--color-primary);
+    color: var(--white);
+  }
+
+  .navbar__cta a:hover {
+    background: var(--blue-700);
+    color: var(--white);
+  }
+}
