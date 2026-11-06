@@ -4,12 +4,20 @@
   list-style: none;
 }
 
+/* Phones: compact cards with the icon on the left */
 .problem__issue {
-  padding: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  padding: 18px;
+}
+
+.problem__issue .icon-badge {
+  grid-row: span 2;
 }
 
 .problem__issue h3 {
-  margin-top: 16px;
+  margin: 2px 0 4px;
 }
 
 .problem__issue p {
@@ -61,7 +69,7 @@
 .problem__grid {
   display: grid;
   gap: 40px;
-  margin-top: 56px;
+  margin-top: 40px;
 }
 
 .problem__subtitle {
@@ -120,6 +128,15 @@
 @media (min-width: 640px) {
   .problem__issues {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .problem__issue {
+    display: block;
+    padding: 24px;
+  }
+
+  .problem__issue h3 {
+    margin: 16px 0 8px;
   }
 }
 

@@ -44,7 +44,7 @@ export default function Solution() {
   return (
     <section id="solution" className="section section--alt" aria-labelledby="solution-title">
       <div className="container">
-        <header className="section-header">
+        <header className="section-header" data-reveal>
           <p className="eyebrow">Our solution</p>
           <h2 id="solution-title">One trusted place for every timetable change</h2>
           <p className="lead">
@@ -53,7 +53,7 @@ export default function Solution() {
           </p>
         </header>
 
-        <div className="solution__top">
+        <div className="solution__top" data-reveal>
           <div className="solution__identity">
             <p className="solution__label">System name</p>
             <h3 className="solution__name">{site.systemName}</h3>
@@ -85,7 +85,7 @@ export default function Solution() {
           </div>
         </div>
 
-        <div className="solution__fixes">
+        <div className="solution__fixes" data-reveal>
           <h3>How it fixes the problem</h3>
           <ul role="list">
             {fixes.map((row) => (

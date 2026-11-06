@@ -5,7 +5,7 @@ _Know where your next class really is, before you walk there._
 
 BSE2201 Software Engineering Foundations, group assignment, Zambia University of Technology (ZUT).
 
-**Live site:** FILL_ME (paste the Vercel link here after deploying)
+**Live site:** https://zut-classpulse.vercel.app
 
 ---
 
@@ -27,8 +27,10 @@ verified change to the right students.
 
 **Intended users:** ZUT students, class representatives and lecturers.
 
-This repository contains the project's **landing page** only. The Today screen in the
-"Design preview" section is a static picture, not a working app.
+This repository contains the project's **landing page** only. It includes an interactive
+walkthrough of the five steps, a static picture of the planned Today screen, a simple
+"digital twin" campus map (tap a building, then "Take me there") and a campus photo gallery.
+None of it is a working timetable system: there is no login, database or backend.
 
 ## Technologies
 
@@ -63,18 +65,10 @@ npm run check      # fail if any placeholder text is still left
 
 ## Team responsibilities
 
-| # | Name | Student number | GitHub | Jira key | Responsibility |
-|---|------|----------------|--------|----------|----------------|
-| 1 | Chiyamiko Chibwana | FILL_ME | FILL_ME | SCH-1 | Project setup, README and deployment |
-| 2 | FILL_ME | FILL_ME | FILL_ME | SCH-2 | Navigation bar and footer |
-| 3 | Barach Khosa | FILL_ME | FILL_ME | SCH-3 | Hero section and visual identity |
-| 4 | FILL_ME | FILL_ME | FILL_ME | SCH-4 | Identified problem section |
-| 5 | FILL_ME | FILL_ME | FILL_ME | SCH-5 | Proposed system section |
-| 6 | FILL_ME | FILL_ME | FILL_ME | SCH-6 | How it works section |
-| 7 | FILL_ME | FILL_ME | FILL_ME | SCH-7 | Features and benefits section |
-| 8 | FILL_ME | FILL_ME | FILL_ME | SCH-8 | Today-screen design preview |
-| 9 | FILL_ME | FILL_ME | FILL_ME | SCH-9 | Team section |
-| 10 | FILL_ME | FILL_ME | FILL_ME | SCH-10 | Contact section and responsive QA |
+| Name | Role | Student number | GitHub | Jira keys | Built |
+|------|------|----------------|--------|-----------|-------|
+| Chiyamiko Chibwana | Lead developer | FILL_ME | FILL_ME | SCH-1, SCH-4, SCH-5, SCH-6, SCH-10 | Project setup, architecture and deployment; problem, solution and how-it-works sections; contact section and responsive testing |
+| Barach Khosa | UI designer and front-end developer | FILL_ME | FILL_ME | SCH-2, SCH-3, SCH-7, SCH-8, SCH-9, SCH-11 | Visual identity, hero and navigation; features, Today-screen preview and campus map; team section and photo gallery |
 
 ## Project structure (one sentence per file)
 
@@ -92,33 +86,38 @@ zut-classpulse/
     ├── main.jsx                Starts React and loads the global styles.
     ├── App.jsx                 Puts every section on the page in order.
     ├── assets/zut-logo.jpg     The ZUT logo used in the nav bar, hero and footer.
-    ├── assets/team/            Square team photos, imported in team.js.
+    ├── assets/team/            Square photos of the two developers, imported in team.js.
+    ├── assets/campus/          Campus photos for the hero, gallery and map.
     ├── data/
-    │   ├── site.js             Team name, tagline, course details and contact links (edit here).
-    │   └── team.js             The 10 team members: name, GitHub, Jira key, role (edit here).
+    │   ├── site.js             Tagline, course details, repo link and contact links (edit here).
+    │   ├── team.js             The two developers: name, role, bio, photo, GitHub, Jira keys (edit here).
+    │   └── campus.js           Gallery photos and the buildings on the campus map (edit here).
     ├── styles/
     │   ├── theme.css           Every colour, font, radius and shadow, defined once.
     │   └── global.css          Page reset, layout helpers, headings and button styles.
     └── components/
         ├── Icon.jsx            All inline SVG icons used on the page.
-        ├── Navbar.jsx/.css     SCH-2: sticky top bar with section links and a mobile menu.
+        ├── Navbar.jsx/.css     SCH-2: sticky top bar; highlights the current section; full-width phone menu.
         ├── Hero.jsx/.css       SCH-3: team name, system name, tagline and the two main buttons.
         ├── Problem.jsx/.css    SCH-4: the timetable problem, who it affects and why it matters.
         ├── Solution.jsx/.css   SCH-5: system name, purpose, users and how it fixes the problem.
-        ├── HowItWorks.jsx/.css SCH-6: the five-step flow and the Phase 2 "Coming next" card.
-        ├── Features.jsx/.css   SCH-7: eight feature cards, each with its benefit.
+        ├── HowItWorks.jsx/.css SCH-6: interactive five-step walkthrough (auto-plays) and the Phase 2 card.
+        ├── Features.jsx/.css   SCH-7: eight feature cards with benefits (swipeable on phones).
         ├── DesignPreview.jsx/.css SCH-8: static phone picture of the Today screen.
-        ├── Team.jsx/.css       SCH-9: cards for all 10 members, read from team.js.
-        ├── Contact.jsx/.css    SCH-10: email and WhatsApp buttons, read from site.js.
+        ├── CampusMap.jsx/.css  SCH-11: clickable campus map with live status and "Take me there" routes.
+        ├── Gallery.jsx/.css    SCH-11: campus photo grid (swipe row on phones) with a full-size viewer.
+        ├── Team.jsx/.css       SCH-9: profile cards for the two developers, read from team.js.
+        ├── BackToTop.jsx/.css  Round "back to top" button that appears after scrolling.
+        ├── Contact.jsx/.css    SCH-10: email, WhatsApp and GitHub contact buttons, read from site.js.
         └── Footer.jsx/.css     SCH-2: team name, ZUT, BSE2201, year and contact link.
 ```
 
 ## Git workflow
 
-- Each member works on their own branch named after their Jira key, e.g. `SCH-4-problem-section`.
+- Each developer works on their own branch named after their Jira key, e.g. `SCH-4-problem-section`.
 - Commit messages start with the key: `SCH-4: add problem section content`.
 - Pull request titles start with the key too: `SCH-4: Problem section`.
-- A teammate reviews every pull request before it is merged into `main`.
+- The other developer reviews every pull request before it is merged into `main`.
 - After pushing, check that the branch, commits and pull request show under **Development** on
   the Jira ticket.
 
@@ -142,7 +141,7 @@ Every push to `main` redeploys the site automatically.
 - [ ] `npm run check` passes (no placeholder text left).
 - [ ] Live link opens without a login, on phone and desktop.
 - [ ] Every nav link scrolls to its section; the mobile menu opens and closes.
-- [ ] All 10 members, names and GitHub links appear and work.
+- [ ] Both developers' names, photos and GitHub links appear and work.
 - [ ] Contact link (email and/or WhatsApp) works on the live site.
 - [ ] Logo and icons load; no broken images.
 - [ ] Checked at phone, tablet and desktop widths with no sideways scrolling.

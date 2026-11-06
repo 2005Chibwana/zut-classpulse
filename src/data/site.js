@@ -1,9 +1,8 @@
-// Site-wide details: team name, system name and contact links.
+// Site-wide details: system name, course details and contact links.
 // Edit the values here. Never change layout code just to change a name.
 // After editing, run `npm run check` to make sure no placeholder is left.
 
 export const site = {
-  teamName: 'FILL_ME', // e.g. 'Team Pulse'
   systemName: 'ZUT ClassPulse',
   systemLongName: 'The Self-Updating Timetable and Class-Alert Hub',
   tagline: 'Know where your next class really is, before you walk there.',
@@ -12,6 +11,7 @@ export const site = {
   courseCode: 'BSE2201',
   courseName: 'Software Engineering Foundations',
   year: 2026,
+  repoUrl: 'https://github.com/emmanuelkasuba/zut-classpulse',
   contact: {
     // Fill in at least ONE of these. An empty one is simply hidden on the page.
     email: 'FILL_ME', // e.g. 'classpulse.team@gmail.com'
@@ -37,4 +37,6 @@ export const contactLinks = {
         'Hi, I have a question about ZUT ClassPulse.'
       )}`
     : null,
+  // Always works: opens a new question on the project's GitHub page.
+  github: `${site.repoUrl}/issues/new`,
 };

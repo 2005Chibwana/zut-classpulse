@@ -1,79 +1,456 @@
-/* Mobile: steps run down the page with a line joining the numbers */
-.steps {
+.how {
   display: grid;
-  gap: 0;
-  list-style: none;
+  gap: 20px;
 }
 
-.steps__item {
-  position: relative;
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 16px;
-  padding-bottom: 20px;
+/* ---------- Step list ---------- */
+/* Phones: a sideways-scrolling row of numbered steps */
+.how__tabs {
+  display: flex;
+  gap: 8px;
+  margin-inline: calc(var(--gutter) * -1);
+  padding: 4px var(--gutter) 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
-.steps__item:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  top: 44px;
-  bottom: 0;
-  left: 21px;
-  width: 2px;
-  background: var(--blue-100);
+.how__tabs::-webkit-scrollbar {
+  display: none;
 }
 
-.steps__number {
+.how__tab {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 16px 8px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  font-family: inherit;
+  text-align: left;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.how__tab:hover {
+  border-color: var(--color-primary);
+}
+
+.how__num {
   display: grid;
+  flex-shrink: 0;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: var(--color-primary);
+  background: var(--blue-100);
   font-family: var(--font-heading);
-  font-size: 1.1rem;
   font-weight: 800;
+  color: var(--color-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.how__tab.is-done .how__num {
+  background: var(--green-100);
+  color: var(--green-700);
+}
+
+.how__tab.is-active {
+  border-color: var(--color-primary);
+  background: var(--blue-50);
+  box-shadow: 0 0 0 3px var(--blue-100);
+}
+
+.how__tab.is-active .how__num {
+  background: var(--color-primary);
   color: var(--white);
-  box-shadow: 0 0 0 6px var(--blue-50);
 }
 
-.steps__card {
-  padding: 20px;
+.how__tab-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.steps__card h3 {
-  margin-top: 14px;
+.how__tab-desc {
+  display: none;
 }
 
-.steps__card p {
+/* ---------- Panel ---------- */
+.how__panel {
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.how__panel-head {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.how__panel-head h3 {
   margin: 0;
+  font-size: 1.35rem;
+}
+
+.how__count {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+.how__panel-text {
   color: var(--color-muted);
 }
 
-/* Desktop: five steps in a row with a line across the top */
-@media (min-width: 1024px) {
-  .steps {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 16px;
+.how__stage {
+  display: grid;
+  place-items: center;
+  min-height: 250px;
+  padding: 20px 16px;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(20, 136, 245, 0.12), transparent 50%),
+    var(--grey-50);
+}
+
+/* Controls */
+.how__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.how__ctrl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.how__ctrl:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.how__ctrl--play {
+  padding: 0 16px;
+}
+
+.how__progress {
+  flex: 1 1 120px;
+  height: 6px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--grey-100);
+}
+
+.how__progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-accent);
+}
+
+.how__progress span.is-running {
+  animation: how-progress var(--step-ms) linear forwards;
+}
+
+@keyframes how-progress {
+  to {
+    width: 100%;
+  }
+}
+
+/* ---------- The animated example ---------- */
+.demo {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  max-width: 380px;
+}
+
+/* Visible by default; the animation only fades items in (so reduced-motion users still see them) */
+.demo [style*='--d'],
+.demo__result {
+  animation: demo-in 0.5s ease both;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes demo-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.demo__pickers {
+  display: grid;
+  gap: 8px;
+}
+
+.demo__picker {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.demo__picker span {
+  color: var(--color-muted);
+}
+
+.demo__card {
+  padding: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.demo__card-label {
+  margin-bottom: 10px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--color-primary-strong);
+}
+
+.demo__fields {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 12px;
+}
+
+.demo__fields div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--grey-200);
+}
+
+.demo__fields dt {
+  color: var(--color-muted);
+}
+
+.demo__fields dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+.demo__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  font-weight: 700;
+  color: var(--white);
+}
+
+.demo__checks {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+
+.demo__checks li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.demo__checks svg {
+  color: var(--green-700);
+}
+
+.demo__meter {
+  height: 8px;
+  margin-top: 14px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--grey-100);
+}
+
+.demo__meter span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green-700);
+  animation: demo-meter 0.6s ease 1s both;
+}
+
+@keyframes demo-meter {
+  from {
+    width: 50%;
+  }
+}
+
+.demo__sms {
+  padding: 16px;
+  border-radius: 18px;
+  background: #e9edf2;
+}
+
+.demo__sms-from {
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.demo__bubble {
+  max-width: 92%;
+  margin: 0 0 8px;
+  padding: 10px 14px;
+  border-radius: 16px 16px 16px 4px;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.demo__bubble--small {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.demo__clash {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 2px dashed var(--red-700);
+  border-radius: 14px;
+  list-style: none;
+}
+
+.demo__clash li {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--white);
+}
+
+.demo__clash span {
+  font-weight: 700;
+  color: var(--color-primary-strong);
+}
+
+.demo__clash em {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--red-100);
+  font-style: normal;
+  font-weight: 800;
+  color: var(--red-700);
+}
+
+.demo__result {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.demo__result svg {
+  flex-shrink: 0;
+}
+
+.demo__result--ok {
+  background: var(--green-100);
+  color: var(--green-700);
+}
+
+.demo__result--wait {
+  background: var(--amber-100);
+  color: var(--amber-800);
+}
+
+.demo__result--info {
+  background: var(--blue-100);
+  color: var(--blue-700);
+}
+
+.demo__result--clash {
+  background: var(--red-100);
+  color: var(--red-700);
+}
+
+/* ---------- Desktop: steps on the left, panel on the right ---------- */
+@media (min-width: 960px) {
+  .how {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+    align-items: start;
   }
 
-  .steps__item {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    padding-bottom: 0;
+  .how__tabs {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
   }
 
-  .steps__item:not(:last-child)::before {
-    top: 21px;
-    bottom: auto;
-    left: 44px;
-    right: -16px;
-    width: auto;
-    height: 2px;
+  .how__tab {
+    align-items: flex-start;
+    padding: 14px 18px 14px 14px;
+    border-radius: var(--radius);
   }
 
-  .steps__card {
-    height: 100%;
+  .how__tab-title {
+    white-space: normal;
+    padding-top: 4px;
+  }
+
+  .how__tab.is-active .how__tab-desc {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.92rem;
+    color: var(--color-muted);
+  }
+
+  .how__panel {
+    position: sticky;
+    top: calc(var(--nav-height) + 20px);
+    padding: 28px;
   }
 }
 
@@ -82,7 +459,7 @@
   display: grid;
   gap: 16px;
   margin-top: 40px;
-  padding: 28px 24px;
+  padding: 24px 20px;
   border: 2px dashed #f5b76b;
   border-radius: var(--radius-lg);
   background: var(--amber-100);
@@ -109,6 +486,11 @@
 .phase2__body p {
   margin: 0;
   color: var(--grey-700);
+}
+
+.phase2__body a {
+  font-weight: 700;
+  color: var(--amber-800);
 }
 
 .phase2__icons {

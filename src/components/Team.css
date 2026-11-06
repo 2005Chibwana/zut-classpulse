@@ -1,81 +1,50 @@
 .team {
   display: grid;
-  gap: 16px;
+  gap: 20px;
+  max-width: 1000px;
+  margin-inline: auto;
   list-style: none;
 }
 
-.team__card {
+.profile {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 28px 20px 24px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 24px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.team__card:hover {
-  transform: translateY(-3px);
+.profile:hover {
   box-shadow: var(--shadow);
 }
 
-/* Photo, or initials when there is no photo */
-.team__avatar {
-  display: grid;
+.profile__head {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile__photo {
   flex-shrink: 0;
-  place-items: center;
-  width: 88px;
-  height: 88px;
-  margin-bottom: 16px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
-  background: linear-gradient(140deg, var(--blue-600), var(--blue-900));
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--white);
-  box-shadow: 0 0 0 4px var(--white), 0 0 0 6px var(--amber-500);
+  box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--amber-500);
 }
 
-.team__avatar--large {
-  width: 120px;
-  height: 120px;
-  margin: 0;
-  font-size: 2.2rem;
+.profile__name {
+  margin-bottom: 4px;
+  font-size: 1.3rem;
 }
 
-.team__name {
-  margin-bottom: 6px;
-  font-size: 1.05rem;
-  overflow-wrap: anywhere;
+.profile__title {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--color-accent-text);
 }
 
-.team__role {
-  margin-bottom: 12px;
-  font-size: 0.92rem;
-  color: var(--color-muted);
-}
-
-.team__task {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-  background: var(--blue-50);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-primary);
-}
-
-.team__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 16px;
-}
-
-.team__github,
-.team__bio-btn {
+.profile__github {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -83,104 +52,89 @@
   padding: 6px 14px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  background: var(--white);
-  font-family: inherit;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-text);
   text-decoration: none;
-  cursor: pointer;
-  overflow-wrap: anywhere;
 }
 
-.team__bio-btn {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.team__github:hover,
-.team__bio-btn:hover {
+.profile__github:hover {
   border-color: var(--color-primary);
   background: var(--blue-50);
   color: var(--color-primary);
 }
 
-/* Bio pop-up */
-.team__dialog {
-  width: min(560px, calc(100% - 32px));
-  max-height: calc(100% - 32px);
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  color: var(--color-text);
-}
-
-.team__dialog::backdrop {
-  background: rgba(7, 28, 61, 0.6);
-  backdrop-filter: blur(3px);
-}
-
-.team__dialog-body {
-  position: relative;
-  padding: 32px 24px 28px;
-}
-
-.team__dialog-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--grey-100);
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-.team__dialog-close:hover {
-  background: var(--grey-200);
-}
-
-.team__dialog-head {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-right: 32px;
-}
-
-.team__dialog-head h3 {
-  margin-bottom: 4px;
-  font-size: 1.4rem;
-}
-
-.team__dialog-head .team__role {
-  margin-bottom: 8px;
-}
-
-.team__bio {
+.profile__bio {
   margin-bottom: 20px;
   line-height: 1.7;
   color: var(--grey-700);
 }
 
+.profile__built {
+  margin-top: auto;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  background: var(--blue-50);
+}
+
+.profile__built h4 {
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.profile__built ul {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+}
+
+.profile__built li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-weight: 500;
+}
+
+.profile__built svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--green-700);
+}
+
+.profile__tasks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+  list-style: none;
+}
+
+.profile__tasks li {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--grey-100);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--grey-700);
+}
+
 @media (min-width: 560px) {
-  .team {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .profile {
+    padding: 32px;
   }
 
-  .team__dialog-body {
-    padding: 40px 36px 32px;
+  .profile__photo {
+    width: 112px;
+    height: 112px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .team {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
   }
 }

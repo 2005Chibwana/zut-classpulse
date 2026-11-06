@@ -160,6 +160,29 @@ const paths = {
       <polyline points="5 12 12 5 19 12" />
     </>
   ),
+  play: <polygon points="6 4 20 12 6 20 6 4" />,
+  pause: (
+    <>
+      <rect x="6" y="4" width="4" height="16" rx="1" />
+      <rect x="14" y="4" width="4" height="16" rx="1" />
+    </>
+  ),
+  'chevron-left': <polyline points="15 18 9 12 15 6" />,
+  'chevron-right': <polyline points="9 18 15 12 9 6" />,
+  expand: (
+    <>
+      <polyline points="15 3 21 3 21 9" />
+      <polyline points="9 21 3 21 3 15" />
+      <line x1="21" y1="3" x2="14" y2="10" />
+      <line x1="3" y1="21" x2="10" y2="14" />
+    </>
+  ),
+  send: (
+    <>
+      <line x1="22" y1="2" x2="11" y2="13" />
+      <polygon points="22 2 15 22 11 13 2 9 22 2" />
+    </>
+  ),
   home: (
     <>
       <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />

@@ -32,7 +32,7 @@ export default function DesignPreview() {
     <section id="preview" className="section" aria-labelledby="preview-title">
       <div className="container preview">
         <div className="preview__copy">
-          <header className="section-header section-header--left">
+          <header className="section-header section-header--left" data-reveal>
             <p className="eyebrow">Design preview</p>
             <h2 id="preview-title">The Today screen, at a glance</h2>
             <p className="lead">
@@ -54,7 +54,7 @@ export default function DesignPreview() {
           </ul>
         </div>
 
-        <figure className="preview__figure">
+        <figure className="preview__figure" data-reveal>
           <div className="phone">
             <div className="phone__notch" aria-hidden="true" />
             <div className="phone__screen">

@@ -56,7 +56,7 @@ export default function Problem() {
   return (
     <section id="problem" className="section" aria-labelledby="problem-title">
       <div className="container">
-        <header className="section-header">
+        <header className="section-header" data-reveal>
           <p className="eyebrow">The problem</p>
           <h2 id="problem-title">Timetable chaos is costing ZUT students time and marks</h2>
           <p className="lead">
@@ -66,8 +66,13 @@ export default function Problem() {
         </header>
 
         <ul className="problem__issues" role="list">
-          {issues.map((issue) => (
-            <li key={issue.title} className="card problem__issue">
+          {issues.map((issue, index) => (
+            <li
+              key={issue.title}
+              className="card problem__issue"
+              data-reveal
+              style={{ '--reveal-delay': `${index * 80}ms` }}
+            >
               <span className="icon-badge icon-badge--amber">
                 <Icon name={issue.icon} />
               </span>
@@ -77,7 +82,7 @@ export default function Problem() {
           ))}
         </ul>
 
-        <div className="problem__scatter">
+        <div className="problem__scatter" data-reveal>
           <p className="problem__scatter-label">Today, updates are scattered across</p>
           <ul className="problem__sources" role="list">
             {sources.map((source) => (
@@ -90,7 +95,7 @@ export default function Problem() {
           </p>
         </div>
 
-        <div className="problem__grid">
+        <div className="problem__grid" data-reveal>
           <div>
             <h3 className="problem__subtitle">Who is affected</h3>
             <ul className="problem__affected" role="list">

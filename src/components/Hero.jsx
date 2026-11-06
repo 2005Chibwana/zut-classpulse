@@ -1,17 +1,24 @@
-// SCH-3: First screen visitors see: team name, system name, tagline and two call-to-action buttons.
+// SCH-3: First screen visitors see: system name, tagline, who built it and two call-to-action buttons.
 import { site } from '../data/site.js';
+import { teamFirstNames } from '../data/team.js';
 import Icon from './Icon.jsx';
 import logo from '../assets/zut-logo.jpg';
+import heroPhoto from '../assets/campus/hero-ict-centre.jpg';
 import './Hero.css';
 
 export default function Hero() {
   return (
-    <section id="top" className="hero" aria-labelledby="hero-title">
+    <section
+      id="top"
+      className="hero"
+      aria-labelledby="hero-title"
+      style={{ '--hero-photo': `url(${heroPhoto})` }}
+    >
       <div className="container hero__inner">
         <div className="hero__copy">
           <p className="hero__team">
             <span className="hero__pulse" aria-hidden="true" />
-            {site.teamName} · {site.courseCode} group project
+            {site.courseCode} project by {teamFirstNames}
           </p>
 
           <h1 id="hero-title" className="hero__title">

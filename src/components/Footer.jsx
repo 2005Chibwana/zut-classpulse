@@ -1,5 +1,6 @@
-// SCH-2: Footer with the team name, ZUT, course code, year and a contact link.
+// SCH-2: Footer with the developers, ZUT, course code, year and contact links.
 import { site, contactLinks } from '../data/site.js';
+import { teamFullNames } from '../data/team.js';
 import Icon from './Icon.jsx';
 import logo from '../assets/zut-logo.jpg';
 import './Footer.css';
@@ -22,7 +23,7 @@ export default function Footer() {
 
         <div className="footer__meta">
           <p>
-            Built by <strong>{site.teamName}</strong> for {site.courseCode} {site.courseName}
+            Built by <strong>{teamFullNames}</strong> for {site.courseCode} {site.courseName}
           </p>
           <p>
             {site.institution} ({site.institutionShort}) · © {site.year}
@@ -30,7 +31,11 @@ export default function Footer() {
         </div>
 
         <div className="footer__links">
-          <a href={contactHref}>Contact the team</a>
+          <a href={contactHref}>Contact us</a>
+          <a href={site.repoUrl} target="_blank" rel="noopener noreferrer">
+            <Icon name="github" size={16} />
+            Source code
+          </a>
           <a href="#top">
             Back to top
             <Icon name="arrow-up" size={16} />

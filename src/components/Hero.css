@@ -2,12 +2,14 @@
   --focus-ring: var(--amber-300);
   position: relative;
   overflow: hidden;
-  padding-block: 56px 72px;
+  padding-block: 40px 56px;
   color: var(--white);
   background:
     radial-gradient(900px 480px at 90% -10%, rgba(20, 136, 245, 0.45), transparent 60%),
     radial-gradient(700px 380px at -10% 110%, rgba(242, 140, 40, 0.22), transparent 60%),
-    linear-gradient(160deg, var(--blue-950), var(--blue-900) 55%, var(--blue-700));
+    linear-gradient(160deg, rgba(7, 28, 61, 0.96), rgba(11, 44, 95, 0.9) 55%, rgba(10, 79, 168, 0.82)),
+    var(--hero-photo, none) center 40% / cover no-repeat,
+    var(--blue-950);
 }
 
 .hero__inner {
@@ -97,7 +99,7 @@
 }
 
 .hero__logo {
-  width: min(260px, 68vw);
+  width: min(220px, 60vw);
   height: auto;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -113,7 +115,7 @@
   gap: 12px;
   width: 100%;
   max-width: 320px;
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 .hero__chip {

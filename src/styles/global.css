@@ -30,6 +30,12 @@ svg {
   max-width: 100%;
 }
 
+button,
+input,
+select {
+  font: inherit;
+}
+
 h1,
 h2,
 h3,
@@ -69,7 +75,7 @@ ol {
 }
 
 .section {
-  padding-block: 72px;
+  padding-block: 56px;
 }
 
 .section--alt {
@@ -89,8 +95,14 @@ section[id] {
 /* ---------- Section headings ---------- */
 .section-header {
   max-width: 720px;
-  margin: 0 auto 48px;
+  margin: 0 auto 32px;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .section-header {
+    margin-bottom: 48px;
+  }
 }
 
 .section-header--left {
@@ -114,8 +126,14 @@ section[id] {
 }
 
 .lead {
-  font-size: 1.125rem;
+  font-size: 1.06rem;
   color: var(--color-muted);
+}
+
+@media (min-width: 768px) {
+  .lead {
+    font-size: 1.125rem;
+  }
 }
 
 /* ---------- Buttons ---------- */
@@ -200,6 +218,20 @@ section[id] {
 .icon-badge--amber {
   background: var(--amber-100);
   color: var(--amber-800);
+}
+
+/* ---------- Scroll reveal (switched on by App.jsx) ---------- */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease var(--reveal-delay, 0ms),
+    transform 0.6s ease var(--reveal-delay, 0ms);
+}
+
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ---------- Accessibility ---------- */

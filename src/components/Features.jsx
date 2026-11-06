@@ -57,7 +57,7 @@ export default function Features() {
   return (
     <section id="features" className="section section--alt" aria-labelledby="features-title">
       <div className="container">
-        <header className="section-header">
+        <header className="section-header" data-reveal>
           <p className="eyebrow">Features &amp; benefits</p>
           <h2 id="features-title">Everything you need to never miss a class change</h2>
           <p className="lead">
@@ -66,8 +66,13 @@ export default function Features() {
         </header>
 
         <ul className="features" role="list">
-          {features.map((feature) => (
-            <li key={feature.title} className="card feature">
+          {features.map((feature, index) => (
+            <li
+              key={feature.title}
+              className="card feature"
+              data-reveal
+              style={{ '--reveal-delay': `${(index % 4) * 80}ms` }}
+            >
               <span className="icon-badge">
                 <Icon name={feature.icon} />
               </span>
@@ -83,6 +88,9 @@ export default function Features() {
             </li>
           ))}
         </ul>
+        <p className="features__hint" aria-hidden="true">
+          Swipe to see all {features.length} features →
+        </p>
       </div>
     </section>
   );

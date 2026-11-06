@@ -6,10 +6,23 @@
   border-bottom: 1px solid var(--color-border);
   backdrop-filter: saturate(180%) blur(10px);
   -webkit-backdrop-filter: saturate(180%) blur(10px);
+  transition: box-shadow 0.2s ease;
+}
+
+.navbar.is-scrolled {
+  box-shadow: 0 6px 20px rgba(15, 27, 45, 0.08);
+}
+
+/* A blur filter would trap the full-screen backdrop inside the bar, so drop it while open */
+.navbar.is-open {
+  background: var(--white);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .navbar__inner {
   position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,37 +56,57 @@
 .navbar__toggle {
   display: inline-grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--white);
   color: var(--color-primary-strong);
   cursor: pointer;
 }
 
-/* Mobile: links drop down below the bar when the menu is open */
+.navbar.is-open .navbar__toggle {
+  border-color: var(--blue-900);
+  background: var(--blue-900);
+  color: var(--white);
+}
+
+/* Phones and tablets: a full-width menu that drops down under the bar */
 .navbar__links {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   display: none;
-  padding: 8px var(--gutter) 16px;
+  max-height: calc(100dvh - var(--nav-height));
+  padding: 8px var(--gutter) 20px;
+  overflow-y: auto;
   list-style: none;
   background: var(--white);
   border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
 }
 
-.navbar__links.is-open {
-  display: block;
+.navbar.is-open .navbar__links {
+  display: grid;
+  gap: 2px;
+  animation: menu-in 0.2s ease;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 .navbar__links a {
-  display: block;
-  padding: 12px 10px;
-  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-text);
   text-decoration: none;
@@ -84,38 +117,90 @@
   color: var(--color-primary);
 }
 
-/* Desktop: links sit in a row and the menu button is hidden */
-@media (min-width: 960px) {
-  .navbar__toggle {
+.navbar__links a[aria-current='true'] {
+  background: var(--blue-50);
+  color: var(--color-primary);
+}
+
+.navbar__cta a {
+  justify-content: center;
+  margin-top: 8px;
+  background: var(--color-primary);
+  color: var(--white);
+}
+
+.navbar__cta a:hover,
+.navbar__cta a[aria-current='true'] {
+  background: var(--blue-700);
+  color: var(--white);
+}
+
+.navbar__backdrop {
+  position: fixed;
+  inset: var(--nav-height) 0 0;
+  z-index: 1;
+  background: rgba(7, 28, 61, 0.45);
+  animation: backdrop-in 0.2s ease;
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Wide screens: links in a row, no menu button */
+@media (min-width: 1100px) {
+  .navbar__toggle,
+  .navbar__backdrop {
     display: none;
   }
 
-  .navbar__links {
+  .navbar__links,
+  .navbar.is-open .navbar__links {
     position: static;
     display: flex;
     align-items: center;
     gap: 2px;
+    max-height: none;
     padding: 0;
+    overflow: visible;
     background: none;
     border: 0;
     box-shadow: none;
+    animation: none;
   }
 
   .navbar__links a {
-    padding: 8px 12px;
+    position: relative;
+    min-height: 40px;
+    padding: 0 12px;
+    border-radius: 10px;
     font-size: 0.95rem;
   }
 
-  .navbar__cta a {
-    margin-left: 8px;
-    padding: 8px 20px;
-    border-radius: var(--radius-pill);
-    background: var(--color-primary);
-    color: var(--white);
+  .navbar__links a[aria-current='true'] {
+    background: none;
   }
 
-  .navbar__cta a:hover {
-    background: var(--blue-700);
-    color: var(--white);
+  .navbar__links a[aria-current='true']::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    bottom: 2px;
+    left: 12px;
+    height: 3px;
+    border-radius: 3px;
+    background: var(--color-accent);
+  }
+
+  .navbar__cta a {
+    margin: 0 0 0 8px;
+    padding: 0 20px;
+    border-radius: var(--radius-pill);
+  }
+
+  .navbar__cta a[aria-current='true']::after {
+    display: none;
   }
 }
