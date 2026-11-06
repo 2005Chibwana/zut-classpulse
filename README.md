@@ -65,9 +65,9 @@ npm run check      # fail if any placeholder text is still left
 
 | # | Name | Student number | GitHub | Jira key | Responsibility |
 |---|------|----------------|--------|----------|----------------|
-| 1 | FILL_ME | FILL_ME | FILL_ME | SCH-1 | Project setup, README and deployment |
+| 1 | Chiyamiko Chibwana | FILL_ME | FILL_ME | SCH-1 | Project setup, README and deployment |
 | 2 | FILL_ME | FILL_ME | FILL_ME | SCH-2 | Navigation bar and footer |
-| 3 | FILL_ME | FILL_ME | FILL_ME | SCH-3 | Hero section and visual identity |
+| 3 | Barach Khosa | FILL_ME | FILL_ME | SCH-3 | Hero section and visual identity |
 | 4 | FILL_ME | FILL_ME | FILL_ME | SCH-4 | Identified problem section |
 | 5 | FILL_ME | FILL_ME | FILL_ME | SCH-5 | Proposed system section |
 | 6 | FILL_ME | FILL_ME | FILL_ME | SCH-6 | How it works section |
@@ -92,6 +92,7 @@ zut-classpulse/
     ├── main.jsx                Starts React and loads the global styles.
     ├── App.jsx                 Puts every section on the page in order.
     ├── assets/zut-logo.jpg     The ZUT logo used in the nav bar, hero and footer.
+    ├── assets/team/            Square team photos, imported in team.js.
     ├── data/
     │   ├── site.js             Team name, tagline, course details and contact links (edit here).
     │   └── team.js             The 10 team members: name, GitHub, Jira key, role (edit here).
