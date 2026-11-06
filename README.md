@@ -113,6 +113,32 @@ zut-classpulse/
         └── Footer.jsx/.css     SCH-2: team name, ZUT, BSE2201, year and contact link.
 ```
 
+## Project management with Jira
+
+We (Chiyamiko Chibwana and Barach Khosa) used **Jira** as our project management and
+collaboration tool.
+
+- **We created a project.** All our work lives in the Jira project **ZUT class pulse (ZCP)**,
+  with one epic for the landing page.
+- **We divided the work into smaller tasks.** The epic is split into one story per part of the
+  site (setup and deployment, navigation and footer, hero, problem, solution, how it works,
+  features, Today-screen preview, team, contact, campus map and gallery).
+- **We assigned tasks to team members.** Each story has an owner. Chiyamiko took setup,
+  deployment and the content sections; Barach took the visual design and the interactive
+  sections. The *Team responsibilities* table above shows who owned what.
+- **We tracked progress on a Kanban board.** Our board has three columns: **To Do**,
+  **In Progress** and **Done**. We moved each card across the board as the work moved forward,
+  so we could both see the state of the project at a glance.
+- **We set deadlines and priorities.** Each task has a due date and a priority, so we always
+  knew what to work on first and what was due next.
+- **We communicated through comments.** Questions, review notes and decisions about a task were
+  written as comments on its Jira card, so the discussion stayed next to the work.
+- **We linked Jira to GitHub.** Branches, commits and pull requests start with the Jira key, so
+  each card shows its code under **Development** (see *Git workflow* below).
+
+**What it gave us:** clear responsibilities, an easy way to monitor progress, and better
+teamwork, because each of us always knew what the other was doing and what was left.
+
 ## Git workflow
 
 - Each developer works on their own branch named after their Jira key, e.g. `SCH-4-problem-section`.
