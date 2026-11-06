@@ -135,6 +135,24 @@
   color: var(--white);
 }
 
+.navbar__progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  z-index: 3;
+  height: 3px;
+  pointer-events: none;
+}
+
+.navbar__progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-500), var(--amber-500));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
 .navbar__backdrop {
   position: fixed;
   inset: var(--nav-height) 0 0;

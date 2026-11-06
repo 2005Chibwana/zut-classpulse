@@ -9,19 +9,25 @@
 .profile {
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+  padding: 0 24px 24px;
 }
 
-.profile:hover {
-  box-shadow: var(--shadow);
+/* Campus photo banner across the top of the card */
+.profile__cover {
+  aspect-ratio: auto;
+  height: 132px;
+  margin: 0 -24px;
 }
 
 .profile__head {
+  position: relative;
+  z-index: 1;
   display: flex;
-  gap: 18px;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  margin: -56px 0 18px;
 }
 
 .profile__photo {
@@ -123,7 +129,12 @@
 
 @media (min-width: 560px) {
   .profile {
-    padding: 32px;
+    padding: 0 32px 32px;
+  }
+
+  .profile__cover {
+    height: 150px;
+    margin: 0 -32px;
   }
 
   .profile__photo {

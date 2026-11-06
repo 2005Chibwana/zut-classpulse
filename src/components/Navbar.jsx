@@ -1,6 +1,6 @@
 // SCH-2: Sticky navigation bar. Highlights the section you are reading and has a full-width
 // menu on phones (closes with Esc, a tap outside, or picking a link).
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Icon from './Icon.jsx';
 import logo from '../assets/zut-logo.jpg';
 import './Navbar.css';
@@ -20,6 +20,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState('');
   const [scrolled, setScrolled] = useState(false);
+  const progressRef = useRef(null);
 
   // Close the menu with Esc or when the screen gets wide; stop the page scrolling behind it.
   useEffect(() => {
@@ -36,9 +37,15 @@ export default function Navbar() {
     };
   }, [open]);
 
-  // Add a shadow once the page is scrolled.
+  // Add a shadow once the page is scrolled, and fill the reading-progress bar.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+      }
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -91,6 +98,9 @@ export default function Navbar() {
           ))}
         </ul>
       </nav>
+      <div className="navbar__progress" aria-hidden="true">
+        <span ref={progressRef} />
+      </div>
       {open && <div className="navbar__backdrop" aria-hidden="true" onClick={() => setOpen(false)} />}
     </header>
   );

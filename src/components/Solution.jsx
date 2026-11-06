@@ -1,6 +1,7 @@
 // SCH-5: The proposed system: its name, purpose, intended users and how it solves the problem.
 import { site } from '../data/site.js';
 import Icon from './Icon.jsx';
+import ictPhoto from '../assets/campus/ict-centre.jpg';
 import './Solution.css';
 
 const users = [
@@ -54,7 +55,7 @@ export default function Solution() {
         </header>
 
         <div className="solution__top" data-reveal>
-          <div className="solution__identity">
+          <div className="solution__identity" style={{ '--identity-photo': `url(${ictPhoto})` }}>
             <p className="solution__label">System name</p>
             <h3 className="solution__name">{site.systemName}</h3>
             <p className="solution__longname">{site.systemLongName}</p>

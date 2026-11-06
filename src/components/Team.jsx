@@ -26,6 +26,9 @@ export default function Team() {
               data-reveal
               style={{ '--reveal-delay': `${index * 120}ms` }}
             >
+              <div className="cover profile__cover">
+                <img src={member.cover} alt="" width="1000" height="750" loading="lazy" />
+              </div>
               <div className="profile__head">
                 <img
                   className="profile__photo"

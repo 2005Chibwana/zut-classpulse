@@ -5,6 +5,8 @@
 //   tasks            – the Jira keys this person owns
 import chiyamikoPhoto from '../assets/team/chiyamiko-chibwana.jpg';
 import barachPhoto from '../assets/team/barach-khosa.jpg';
+import chiyamikoCover from '../assets/campus/jacaranda-avenue.jpg';
+import barachCover from '../assets/campus/courtyard.jpg';
 
 export const team = [
   {
@@ -12,6 +14,7 @@ export const team = [
     title: 'Lead developer',
     github: 'FILL_ME',
     photo: chiyamikoPhoto,
+    cover: chiyamikoCover,
     responsibilities: [
       'Project setup, architecture and deployment',
       'Problem, solution and how-it-works content',
@@ -25,6 +28,7 @@ export const team = [
     title: 'UI designer and front-end developer',
     github: 'FILL_ME',
     photo: barachPhoto,
+    cover: barachCover,
     responsibilities: [
       'Visual identity, hero and navigation',
       'Features, Today-screen preview and campus map',

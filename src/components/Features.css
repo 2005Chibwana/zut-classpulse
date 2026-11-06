@@ -17,7 +17,7 @@
 }
 
 .features .feature {
-  flex: 0 0 80%;
+  flex: 0 0 82%;
   scroll-snap-align: start;
 }
 
@@ -31,17 +31,25 @@
 .feature {
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
 }
 
-.feature:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
+.feature__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 22px 22px;
+}
+
+.feature__icon {
+  position: relative;
+  z-index: 1;
+  margin: -26px 0 14px;
+  box-shadow: 0 0 0 4px var(--white);
 }
 
 .feature h3 {
-  margin-top: 16px;
+  margin-bottom: 8px;
 }
 
 .feature__text {

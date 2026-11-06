@@ -7,7 +7,10 @@
   --focus-ring: var(--amber-300);
   padding: 32px 28px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(150deg, var(--blue-900), var(--blue-700));
+  background:
+    linear-gradient(150deg, rgba(11, 44, 95, 0.96), rgba(10, 79, 168, 0.88)),
+    var(--identity-photo, none) center / cover no-repeat,
+    var(--blue-900);
   color: #dce8f7;
   box-shadow: var(--shadow);
 }

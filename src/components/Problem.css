@@ -4,24 +4,48 @@
   list-style: none;
 }
 
-/* Phones: compact cards with the icon on the left */
+/* Phones: photo thumbnail on the left, text on the right */
 .problem__issue {
   display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 16px;
-  padding: 18px;
+  grid-template-columns: 112px 1fr;
+  overflow: hidden;
 }
 
-.problem__issue .icon-badge {
-  grid-row: span 2;
+.problem__cover {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 132px;
+}
+
+.problem__num {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.problem__body {
+  padding: 16px 16px 16px 18px;
+}
+
+.problem__icon {
+  display: none;
 }
 
 .problem__issue h3 {
-  margin: 2px 0 4px;
+  margin: 0 0 6px;
+  font-size: 1.08rem;
 }
 
 .problem__issue p {
   margin: 0;
+  font-size: 0.95rem;
   color: var(--color-muted);
 }
 
@@ -128,15 +152,41 @@
 @media (min-width: 640px) {
   .problem__issues {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
 
+  /* Wider screens: photo cover on top, icon overlapping its bottom edge */
   .problem__issue {
-    display: block;
-    padding: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .problem__cover {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .problem__num {
+    top: 14px;
+    left: 16px;
+  }
+
+  .problem__body {
+    padding: 0 22px 24px;
+  }
+
+  .problem__icon {
+    display: inline-grid;
+    position: relative;
+    z-index: 1;
+    margin: -26px 0 14px;
+    box-shadow: 0 0 0 4px var(--white);
   }
 
   .problem__issue h3 {
-    margin: 16px 0 8px;
+    margin-bottom: 8px;
+    font-size: 1.15rem;
   }
 }
 

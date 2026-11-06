@@ -1,5 +1,9 @@
 // SCH-4: The identified problem: what goes wrong, who it affects and why it must be fixed.
 import Icon from './Icon.jsx';
+import clashPhoto from '../assets/covers/clash-doorway.jpg';
+import roomPhoto from '../assets/covers/today-courtyard.jpg';
+import cancelledPhoto from '../assets/covers/cancelled-quiet.jpg';
+import examPhoto from '../assets/covers/exam-venue.jpg';
 import './Problem.css';
 
 const issues = [
@@ -7,21 +11,29 @@ const issues = [
     icon: 'alert-triangle',
     title: 'Timetable clashes',
     text: 'Two classes land in the same slot or the same room, and nobody notices until students arrive.',
+    photo: clashPhoto,
+    alt: 'Students gathered at the entrance of a teaching block',
   },
   {
     icon: 'map-pin',
     title: 'Room changes',
     text: 'A lecture moves to another block, but half the class still walks to the old room.',
+    photo: roomPhoto,
+    alt: 'A courtyard walkway between trimmed hedges and red-brick blocks',
   },
   {
     icon: 'x-circle',
     title: 'Lecturer cancellations',
     text: 'Students travel to campus for a class that was cancelled hours earlier.',
+    photo: cancelledPhoto,
+    alt: 'A quiet, empty walkway under the trees beside a teaching block',
   },
   {
     icon: 'clipboard',
     title: 'Exam venue confusion',
     text: 'A late venue change leaves students searching for their exam hall on exam day.',
+    photo: examPhoto,
+    alt: 'The ICT Centre of Excellence seen from the lawn',
   },
 ];
 
@@ -73,11 +85,19 @@ export default function Problem() {
               data-reveal
               style={{ '--reveal-delay': `${index * 80}ms` }}
             >
-              <span className="icon-badge icon-badge--amber">
-                <Icon name={issue.icon} />
-              </span>
-              <h3>{issue.title}</h3>
-              <p>{issue.text}</p>
+              <div className="cover problem__cover">
+                <img src={issue.photo} alt={issue.alt} width="720" height="450" loading="lazy" />
+                <span className="problem__num" aria-hidden="true">
+                  0{index + 1}
+                </span>
+              </div>
+              <div className="problem__body">
+                <span className="icon-badge icon-badge--amber problem__icon">
+                  <Icon name={issue.icon} />
+                </span>
+                <h3>{issue.title}</h3>
+                <p>{issue.text}</p>
+              </div>
             </li>
           ))}
         </ul>

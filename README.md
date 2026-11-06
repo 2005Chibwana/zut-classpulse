@@ -87,7 +87,8 @@ zut-classpulse/
     ├── App.jsx                 Puts every section on the page in order.
     ├── assets/zut-logo.jpg     The ZUT logo used in the nav bar, hero and footer.
     ├── assets/team/            Square photos of the two developers, imported in team.js.
-    ├── assets/campus/          Campus photos for the hero, gallery and map.
+    ├── assets/campus/          Campus photos for the hero, gallery, map and team banners.
+    ├── assets/covers/          16:10 photo covers for the problem and feature cards.
     ├── data/
     │   ├── site.js             Tagline, course details, repo link and contact links (edit here).
     │   ├── team.js             The two developers: name, role, bio, photo, GitHub, Jira keys (edit here).
